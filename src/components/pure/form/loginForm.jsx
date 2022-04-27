@@ -34,7 +34,7 @@ const Loginform = ({verifyingCredentials}) => {
         })=>(
             <Form>
                     <label htmlFor="email">email</label>
-                    <Field className='mb-2' id="email" type="text" name="email" placeholder="Enter your email" />
+                    <Field className='mb-2' id="email" type="text" name="email" placeholder="Enter your email: mail@mail.com" />
                     {
                         /* task name Errors */
                         errors.email && touched.email && 
@@ -44,7 +44,7 @@ const Loginform = ({verifyingCredentials}) => {
                     }
 
                     <label htmlFor="password">password</label>
-                    <Field className='mb-2' id="password" type="text" name="password" placeholder="Enter your password" />
+                    <Field className='mb-2' id="password" type="text" name="password" placeholder="Enter your password: password" />
                     {
                         /* task name Errors */
                         errors.password && touched.password && 

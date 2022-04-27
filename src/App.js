@@ -13,7 +13,7 @@ function App() {
   const [logged, setLogged] = useState(false);
 
   function verifyingCredentials(values){
-    values.email === 'empireeapp@gmail.com' && values.password === 'pass' ? logger(true) : alert('datos incorrectos')
+    values.email === 'mail@mail.com' && values.password === 'password' ? logger(true) : alert('datos incorrectos')
   }
 
   function logger(bolean) {
@@ -40,7 +40,7 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="login" element={<Loginpage verifyingCredentials={ verifyingCredentials }/>} />
           <Route path="register" element={<Registerpage />} />
-          <Route element={<Protectedroute logged ={logged} verifyingCredentials={ verifyingCredentials }/>}>
+          <Route element = { <Protectedroute logged ={logged} verifyingCredentials={ verifyingCredentials }/> }>
             <Route path="profile" element = {<Profilepage logged={logged} logger={logger}/>}/> 
           </Route>
           <Route path='*' element={<Notfound />} />
