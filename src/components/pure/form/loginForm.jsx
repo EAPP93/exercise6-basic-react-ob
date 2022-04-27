@@ -12,44 +12,52 @@ const loginSchema = yup.object().shape(
     }
 )
 
-const Loginform = () => {
-
-    function verifyingCredentials(values) {
-        
-        alert('hola')
-        let user = JSON.parse(localStorage.getItem('credentials', values));
-        alert('datos user' + user)
-        values.email === 'empireeapp@gmail.com' && values.password === 'pass' ? alert('loggeado') : alert('nell')
-    }
-
+const Loginform = ({verifyingCredentials}) => {
     let initualValues = {
         email: '',
-        pass: ''
+        password: ''
     }
 
-    
     return (
         <Formik
             initialValues = { initualValues }
             validationSchema = { loginSchema }
-            onSubmit={ (values) => {
-                    alert(JSON.stringify(values))
+            onSubmit= {async (values) => {
+                    await new Promise((r) => setTimeout(r, 1000));
                     verifyingCredentials(values)
                 }}
         >
-                <Form>
+        {({
+            touched,
+            errors,
+            isSubmitting
+        })=>(
+            <Form>
                     <label htmlFor="email">email</label>
                     <Field className='mb-2' id="email" type="text" name="email" placeholder="Enter your email" />
-                    {/* emailErrors */}
-                    {<ErrorMessage name="email" component='div'></ErrorMessage>}
+                    {
+                        /* task name Errors */
+                        errors.email && touched.email && 
+                        (
+                            <ErrorMessage name="email" component='div'></ErrorMessage>
+                        )
+                    }
 
                     <label htmlFor="password">password</label>
                     <Field className='mb-2' id="password" type="text" name="password" placeholder="Enter your password" />
-                    {/* password Errors */}
-                    {<ErrorMessage name="password" component='div'></ErrorMessage>}
+                    {
+                        /* task name Errors */
+                        errors.password && touched.password && 
+                        (
+                            <ErrorMessage name="password" component='div'></ErrorMessage>
+                        )
+                    }
 
                     <button type="submit" className='btn btn-primary ' >Loging</button>
+                    {isSubmitting ? (<p>Sending your credentials...</p>): null}
                 </Form>
+        )}
+                
             
         </Formik>
     );

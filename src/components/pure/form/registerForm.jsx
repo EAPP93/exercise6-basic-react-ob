@@ -41,42 +41,50 @@ const Registerform = () => {
                 }}
         >
 
-            {({errors,touched,isSubmitting}) => {
-                <Form>
-                    <label htmlFor="name">name</label>
-                    <Field className='mb-2' id="name" type="text" name="name" placeholder="Enter your name" />
-                    {
-                        /* name Errors */
-                        errors.name && touched.name && 
-                        (
-                            <ErrorMessage name="name" component='div'></ErrorMessage>
-                        )
-                    }
+{({
+            values,
+                touched,
+                errors,
+                isSubmitting,
+                handleChange,
+                handleBlur 
+        })=>(
+            <Form>
+                <label htmlFor="name">name</label>
+                <Field className='mb-2' id="name" type="text" name="name" placeholder="Enter your name" />
+                {
+                    /* task name Errors */
+                    errors.name && touched.name && 
+                    (
+                        <ErrorMessage name="name" component='div'></ErrorMessage>
+                    )
+                }
 
-                    <label htmlFor="email">Task</label>
-                    <Field className='mb-2' id="email" type="text" name="email" placeholder="Enter your email" />
-                    {
-                        /* emailErrors */
-                        errors.email && touched.email && 
-                        (
-                            <ErrorMessage name="email" component='div'></ErrorMessage>
-                        )
-                    }
+                <label htmlFor="email">email</label>
+                <Field className='mb-2' id="email" type="text" name="email" placeholder="Enter your email" />
+                {
+                    /* task name Errors */
+                    errors.email && touched.email && 
+                    (
+                        <ErrorMessage name="email" component='div'></ErrorMessage>
+                    )
+                }
 
-                    <label htmlFor="password">Task</label>
-                    <Field className='mb-2' id="password" type="text" name="password" placeholder="Enter your password" />
-                    {
-                        /* password Errors */
-                        errors.password && touched.password && 
-                        (
-                            <ErrorMessage name="password" component='div'></ErrorMessage>
-                        )
-                    }
+                <label htmlFor="password">password</label>
+                <Field className='mb-2' id="password" type="text" name="password" placeholder="Enter your password" />
+                {
+                    /* task name Errors */
+                    errors.password && touched.password && 
+                    (
+                        <ErrorMessage name="password" component='div'></ErrorMessage>
+                    )
+                }
 
-                    <button type="submit" className='btn btn-primary ' >Loging</button>
-                    { isSubmitting ? (<p> verifying your credentials...</p>): null }
-                </Form>
-            }}
+                <button type="submit" className='btn btn-primary ' >Loging</button>
+                {isSubmitting ? (<p>Sending your credentials...</p>): null}
+            </Form>
+        )}
+
         </Formik>
     );
 }

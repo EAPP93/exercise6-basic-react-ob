@@ -1,11 +1,11 @@
 import React from 'react';
 import Login from '../../components/container/login';
 
-const Loginpage = () => {
+const Loginpage = ({ verifyingCredentials }) => {
     return (
-        <div>
-            <h1>Login Page</h1>
-            <Login></Login>
+        <div >
+            <h1 >Login Page</h1>
+            <Login verifyingCredentials={ verifyingCredentials }></Login>
         </div>
     );
 }
